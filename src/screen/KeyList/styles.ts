@@ -46,6 +46,26 @@ export const HeaderDatabaseDetails = styled.p`
     padding-left: 8px;
     border-left: 1px solid rgba(255, 255, 255, 0.1);
   }
+
+  span {
+    button {
+      background: transparent;
+      border: 0;
+      color: ${props => props.theme.colors.grey};
+
+      cursor: pointer;
+      transition: color 0.2s;
+
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      &:hover {
+        color: ${props => props.theme.colors.green};
+      }
+    }
+  }
 `
 
 export const KeyListWrapper = styled.div`

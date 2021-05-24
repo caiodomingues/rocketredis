@@ -224,9 +224,6 @@ const Connection: React.FC<IConnectionProps> = ({ connection }) => {
                 type="button"
               >
                 <strong>{database.name}</strong>
-                <span>
-                  {database.keys} {t('keys')}
-                </span>
               </Database>
             ))}
           </DatabaseList>

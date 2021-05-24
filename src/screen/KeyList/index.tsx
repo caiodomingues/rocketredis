@@ -8,6 +8,7 @@ import React, {
   useMemo
 } from 'react'
 import { useTranslation } from 'react-i18next'
+import { FiRefreshCcw } from 'react-icons/fi'
 import { useDebounce } from 'react-use'
 import { useVirtual } from 'react-virtual'
 
@@ -44,9 +45,11 @@ const KeyList: React.FC = () => {
   const [searchInputValue, setSearchInputValue] = useState('')
   const [filter, setFilter] = useState('')
   const [keys, setKeys] = useState<string[]>([])
-
   const [currentConnection] = useRecoilState(currentConnectionState)
-  const [currentDatabase] = useRecoilState(currentDatabaseState)
+
+  const [currentDatabase, setCurrentDatabase] = useRecoilState(
+    currentDatabaseState
+  )
   const [currentKey, setCurrentKey] = useRecoilState(currentKeyState)
 
   useDebounce(
@@ -91,7 +94,7 @@ const KeyList: React.FC = () => {
         setKeys(loadedKeys)
       })
     }
-  }, [currentDatabase])
+  }, [currentDatabase, keys])
 
   return (
     <Container
@@ -108,7 +111,7 @@ const KeyList: React.FC = () => {
               <HeaderDatabaseDetails>
                 <span>{currentDatabase?.name}</span>
                 <span>
-                  {currentDatabase?.keys} {t('keys')}
+                  {keys.length} {t('keys')}
                 </span>
               </HeaderDatabaseDetails>
             </HeaderTextContainer>
